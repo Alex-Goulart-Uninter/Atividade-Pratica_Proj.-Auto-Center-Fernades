@@ -54,15 +54,17 @@ def main():
     #Instancia de gerenciamento dos produtos
     gerenciamento_produto = GerenciamentoDeProdutos()
 
+    print("----------------------------------------------------------------------------------")
     #Menu principal do programa
     while True:
         print(""" \nOpções
               1. Cadastrar Produtos
               2. Listar Produtos
-              3. Sair """)
-        
+              3. Sair""")
+
     # Solicitação para que o usuário esolha um opção do menu
         escolha = input('Entre com algumas das opções do menu: ')
+        print("----------------------------------------------------------------------------------")
 
         #Essa opçõa irá solicita ao usuário as informações do produto a ser cadastrado
         if escolha == '1':
@@ -71,16 +73,18 @@ def main():
             marca = input("Digite a marca do produto: ")
             quantidade_estoque = int(input("Digite a quandtidade do produto no estoque: "))
             valor_unitario = float(input("Digite o valor unitario do produto:"))
-        
+            
             #Variável que ira receber as informações do produto
             produto = Produto(nome_produto, codigo_produto, marca, quantidade_estoque, valor_unitario)
 
             #Gera o cadastro do produto no gerenciamento_produto
             gerenciamento_produto.cadastro_produto(produto)
-        
+            print("----------------------------------------------------------------------------------")
+
         #Essa opção irá imprimir todos os produtos que estão cadastrados
         elif escolha == "2":
             gerenciamento_produto.lista_produtos()
+            print("----------------------------------------------------------------------------------")
 
         #Essa opção irá encerrar o programa
         elif escolha =='3':
