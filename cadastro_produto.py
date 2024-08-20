@@ -114,11 +114,12 @@ def main():
         elif escolha =='3':
             print("O programa esta sendo encerrado!!!")
             break
-
+            
         #Em caso de erro durante a escolha das opções no menu será exibido uma mensagem de erro.
         else:
             print("Cuidado opção escolhida é inválida!!! Tente novamente.")
-
+            
 #Execução do script
 if __name__ == "__main__":
     main()
+    print("----------------------------------------------------------------------------------")
