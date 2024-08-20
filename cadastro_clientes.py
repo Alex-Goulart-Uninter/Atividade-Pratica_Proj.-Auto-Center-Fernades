@@ -34,7 +34,7 @@ class Cliente:
     #Método que irá remover a compra do cliente
     def remover_compra(self, descricao):
         for compra in self.compras:
-            if compra['descricao'] == descricao:
+            if compra['Descricao'] == descricao:
                 self.compras.remove(compra)
             print("Compra removida com sucesso!!!")
             return    
@@ -200,3 +200,4 @@ def main():
 #Excecuta o programa pincipal
 if __name__ == "__main__":
     main()
+    print("----------------------------------------------------------------------------------")
