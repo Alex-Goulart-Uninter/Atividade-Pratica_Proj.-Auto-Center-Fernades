@@ -23,11 +23,15 @@ class GerenciamentoDeProdutos:
     def __init__(self):
         self.produtos = [] # inicializado a lista que servirá de banco de dados temporário
 
-#Função que irá adicionar um novo produto na lista de produtos
+#Função que irá adicionar ou altualizar um produto na lista de produtos
     def cadastro_produto(self, produto):
-        self.produtos.append(produto)
-        print(f"""Produto: {produto.nome_produto} - Codigo: {produto.codigo_produto} - Marca: {produto.marca} - Valor Unitário: R${produto.valor_unitario}
-              cadastrado com sucesso!!""")
+        produto_existente = self.buscar_produto(produto.codigo_produto)
+        if produto_existente:
+            self.atualizar_estoque(produto_existente, produto.quantidade_estoque)
+            self.atualizar_valorUnitario(produto_existente, produto.valor_unitario)
+        else:
+            self.produtos.append(produto)
+            print("Produto cadastrado com sucesso!!!")
 
 #Função verifica se há produtos cadastrados e os imprime
     def lista_produtos(self):
@@ -46,6 +50,26 @@ class GerenciamentoDeProdutos:
 #Função que irá efetuar o calculo do valor total em estoque
     def valor_total_estoque(self):
         return sum(produto.quantidade_estoque * produto.valor_unitario for produto in self.produtos)
+
+#Funcção que irá buscar um produto pelo código
+    def buscar_produto(self, codigo_produto):
+        for produto in self.produtos:
+            if produto.codigo_produto == codigo_produto:
+                return produto
+        return None
+    
+#Função que irá atualizar o estoque de um produto já cadastrado
+    def atualizar_estoque(self, produto_existente, quantidade_adicionada):
+        saldo_existente = produto_existente.quantidade_estoque
+        produto_existente.quantidade_estoque += quantidade_adicionada
+        saldo_atualizado = produto_existente.quantidade_estoque
+        print(f"Esoque do produto atualizado!!!!")
+
+#Função que irá atualizar o valor unitário de um produto já cadastrado
+    def atualizar_valorUnitario(self, produto_existente, novo_valorUnitario):
+        valor_anterior = produto_existente.valor_unitario
+        produto_existente.valor_unitario = novo_valorUnitario
+        print("Valor unitário do produto atualizado!!!")
 
 #Programa principal
 #Função para executar o programa principal
@@ -71,8 +95,8 @@ def main():
             nome_produto = input("Digite o nome do produto: ")
             codigo_produto = input("Digite o código do produto: ")
             marca = input("Digite a marca do produto: ")
-            quantidade_estoque = int(input("Digite a quandtidade do produto no estoque: "))
-            valor_unitario = float(input("Digite o valor unitario do produto:"))
+            quantidade_estoque = int(input("Digite a quantidade do produto no estoque: "))
+            valor_unitario = float(input("Digite o valor unitario do produto R$: "))
             
             #Variável que ira receber as informações do produto
             produto = Produto(nome_produto, codigo_produto, marca, quantidade_estoque, valor_unitario)
