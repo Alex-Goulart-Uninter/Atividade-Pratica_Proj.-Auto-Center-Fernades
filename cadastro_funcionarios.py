@@ -74,3 +74,32 @@ class GerenciamentoDeFuncionarios:
         print("Dados do funcionário atualizado com sucesso!!")
     
 #Programa Principal
+def main():
+
+    #Instância de gerenciamento dos funcionários
+    Gerenciamento_Funcionarios = GerenciamentoDeFuncionarios()
+    print("---------------------------------------------------------------------------------------")
+
+    #Menu principal do programa
+    while True:
+        print(""" Menu para Cadastro de Funcionários
+              1. Cadastrar Funionários
+              2. Lsitar Funcionários
+              3. Atualizar Dados do Funcionário
+              4. Sair
+              """)
+        
+        #Solicita ao uruário que esolha uma opção do menu
+        escolha = input("Escolha um das opções do menu: ")
+        print("---------------------------------------------------------------------------------------")
+
+        #Opção de entrada de dados do funcionário a ser cadastrado
+        if escolha == '1':
+            matricula = input("Digite o Matricula do Funcionário: ")
+            nome_funcionario = input("Digite o nome do Funcionário: ")
+            cpf = input("Digite o CPF do Funcionário: ")
+            email = input("Digite o E-Mail do Funcionário: ")
+            telefone = input("Digite o Telefone do Funcionário: ")
+            endereco = input("Digite o Endereço do Funcionário: ")
+            cargo = input("Digite o Cargo do Funcionário: ")
+            salario = input("Digite o Salario do Funcionário: ")
