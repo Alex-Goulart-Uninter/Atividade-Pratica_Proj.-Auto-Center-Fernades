@@ -20,7 +20,7 @@ class Funcionario:
                            Telefone: '{self.telefone}',
                            Endereço: '{self.endereco}',
                               Cargo: '{self.cargo}',
-                            Salário: '{self.salario}'
+                            Salário R$: '{self.salario}'
                 """)
     
 #Classe que irá gerenciar a lista de funcionário cadastrados
@@ -54,13 +54,13 @@ class GerenciamentoDeFuncionarios:
         for funcionario in self.funcionarios:
             if funcionario.matricula_funcionario == matricula_funcionario:
                 return funcionario
-            return None
+        return None
     
     #Função que irá atualizar os dados do funcionário já cadastrado
     def atualizar_funcionario(self, funcionario_existente, matricula_funcionario=None, email=None, telefone=None, 
                              endereco=None, cargo=None, salario=None):
         if matricula_funcionario:
-            funcionario_existente.matricula = matricula_funcionario
+            funcionario_existente.matricula_funcionario = matricula_funcionario
         if email:
             funcionario_existente.emai = email
         if telefone:
@@ -102,7 +102,7 @@ def main():
             telefone = input("Digite o Telefone do Funcionário: ")
             endereco = input("Digite o Endereço do Funcionário: ")
             cargo = input("Digite o Cargo do Funcionário: ")
-            salario = input("Digite o Salario do Funcionário: ")
+            salario = input("Digite o Salario do Funcionário R$: ")
 
             #Variável que irá recer as informações do funcionário
             funcionario = Funcionario(nome_funcionario, cpf, email, telefone, endereco, matricula_funcionario, cargo, salario)
@@ -152,7 +152,7 @@ def main():
                     elif escolha_atualização == '6':
                         novo_salario = input("Digite o novo Salário do Funcionário: ")
                         Gerenciamento_Funcionarios.atualizar_funcionario(funcionario_existente, salario=novo_salario)
-                    elif escolha =='7':
+                    elif escolha_atualização =='7':
                         break
                     else:
                         print('Ops..!! Algo deu errado, tente novamente!!')
